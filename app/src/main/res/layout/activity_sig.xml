@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SigActivity"
+    android:orientation="vertical"
+    android:layout_weight="10"
+    android:background="@drawable/login">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:padding="50dp"
+        android:src="@drawable/siginpic"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="5"
+        android:padding="25dp">
+
+        <EditText
+            android:id="@+id/addname"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@color/black"
+            android:hint="Enter your name here"
+            android:textColorHint="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/addpw"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:inputType="numberPassword"
+            android:textColor="@color/black"
+            android:hint="Enter your password here"
+            android:textColorHint="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/addemail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:hint="Enter your email here"
+            android:text=""
+            android:textColorHint="@color/black"
+            />
+
+        <Button
+            android:id="@+id/siginbtn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="sign in"
+            android:drawableEnd="@drawable/signinbtnp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Remember your password | LogIN"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>

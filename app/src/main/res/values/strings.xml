@@ -1,3 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Captains card</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="enter_your_e_mail">Enter your E-mail</string>
+    <string name="already_registered_sign_in">Already registered | Sign in</string>
+
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">sign out</string>
 </resources>

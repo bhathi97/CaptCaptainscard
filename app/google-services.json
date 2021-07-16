@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "597055517978",
+    "project_id": "captainscard-6bf2b",
+    "storage_bucket": "captainscard-6bf2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:597055517978:android:e63e5b13ab11dca03ce8a3",
+        "android_client_info": {
+          "package_name": "com.example.captainscard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "597055517978-0vmhf8tgi24r633ft08jpedttb51q0jl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.captainscard",
+            "certificate_hash": "26ce580090eab92b7c2bd0fa1721b26b30386f5d"
+          }
+        },
+        {
+          "client_id": "597055517978-js18n6649kbrooffcp3opjup5of2d9jk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA74-WsKXVFJPmynVNClse6bjQaiGW-d9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "597055517978-js18n6649kbrooffcp3opjup5of2d9jk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
