@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,8 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SigActivity extends AppCompatActivity {
 
-    EditText addname, addpw, addemail;
-    Button siginbtn;
+    private EditText addname, addpw, addemail;
+    private Button signUpBtn;
 
     FirebaseAuth mAuth;
 
@@ -29,11 +30,14 @@ public class SigActivity extends AppCompatActivity {
         addname = findViewById(R.id.addname);
         addpw = findViewById(R.id.addpw);
         addemail = findViewById(R.id.addemail);
-        siginbtn = findViewById(R.id.sigupbtn);
+        signUpBtn = (Button) findViewById(R.id.signIn_page_siginbtn);
         mAuth = FirebaseAuth.getInstance();
 
-        siginbtn.setOnClickListener(view ->{
-            createUser();
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createUser();
+            }
         });
 
     }
