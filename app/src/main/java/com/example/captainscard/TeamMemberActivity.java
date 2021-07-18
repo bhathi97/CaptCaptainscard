@@ -51,8 +51,10 @@ public class TeamMemberActivity extends AppCompatActivity {
         //--------------back-------------------
         backtohomefromteam.setOnClickListener(view ->{
             Toast.makeText(TeamMemberActivity.this,"Welcome back Home ",Toast.LENGTH_SHORT).show();
+            finish();
             Intent intent = new Intent(TeamMemberActivity.this,HomeActivity.class);
             startActivity(intent);
+
 
         } );
 
