@@ -27,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:text="Name :"
                 android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="#000000"/>
 
             <TextView
@@ -148,6 +147,36 @@
                 android:text=""
                 android:layout_marginStart="20dp"
                 android:textColor="#000000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/changedetails"
+                android:text="change"
+                android:drawableRight="@drawable/changep"
+                android:layout_gravity="right"
+                />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/deletedetails"
+                android:text="delete"
+                android:drawableRight="@drawable/deletedetail"
+                android:layout_gravity="right"/>
+
+
+
+
+
+
 
         </LinearLayout>
 

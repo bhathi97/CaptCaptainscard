@@ -30,8 +30,6 @@ public class TeamMemberActivity extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference root = database.getReference().child("player");
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +52,6 @@ public class TeamMemberActivity extends AppCompatActivity {
             finish();
             Intent intent = new Intent(TeamMemberActivity.this,HomeActivity.class);
             startActivity(intent);
-
 
         } );
 
@@ -84,12 +81,6 @@ public class TeamMemberActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-
-
         });
-
-
-
     }
 }

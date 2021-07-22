@@ -16,11 +16,9 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
     ArrayList<Model> mList;
     Context context;
 
-    public MyAdopter(Context context,ArrayList<Model>mList){
-
+    public MyAdopter(Context context,ArrayList<Model> mList){
         this.mList = mList;
         this.context = context;
-
     }
 
 
@@ -50,7 +48,13 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView name,age,position,height,weight,note;
+        TextView name;
+        TextView age;
+        TextView position;
+        TextView height;
+        TextView weight;
+        TextView note;
+
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
 
@@ -62,6 +66,5 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
             note = itemView.findViewById(R.id.noteShow);
 
         }
-
     }
 }

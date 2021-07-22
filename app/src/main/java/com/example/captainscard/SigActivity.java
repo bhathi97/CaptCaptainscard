@@ -39,7 +39,6 @@ public class SigActivity extends AppCompatActivity {
                 createUser();
             }
         });
-
     }
 
     private void createUser(){
@@ -66,6 +65,5 @@ public class SigActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 }

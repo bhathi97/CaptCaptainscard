@@ -41,23 +41,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         sigupbtn.setOnClickListener(view -> {
-//            //test toast successfully worked
-//            //Toast.makeText(MainActivity.this,"User login success",Toast.LENGTH_SHORT).show();
-//
+
             Intent intent = new Intent(this,SigActivity.class);
             startActivity(intent);
 
         });
 
     }
-    //---------------in btn----------------
-    //android:onClick="opensigin"
-    //-------------------------------------
 
-//    public void opensigin(View view){
-//        Intent intent = new Intent(this, Siginpage.class);
-//        startActivity(intent);
-//    }
 
 
     private void loginUser(){

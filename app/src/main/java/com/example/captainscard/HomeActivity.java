@@ -16,6 +16,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private Button teambtn;
     private Button summerybtn;
+    private Button diarybtn;
 
 
     @Override
@@ -26,12 +27,13 @@ public class HomeActivity extends AppCompatActivity {
         logoutbtn = findViewById(R.id.logoutbtn);
         teambtn = findViewById(R.id.teambtn);
         summerybtn = findViewById(R.id.summerybtn);
+        diarybtn = findViewById(R.id.diarybtn);
 
 
 
         mAuth = FirebaseAuth.getInstance();
 
-        //------------------logOutBtn-----------------------
+        //------------------logOutBtn------------------------------------
         logoutbtn.setOnClickListener(view -> {
             mAuth.signOut();
             startActivity(new Intent(HomeActivity.this,MainActivity.class));
@@ -45,6 +47,11 @@ public class HomeActivity extends AppCompatActivity {
         //-----------------summeryBtn---------------------------------------
         summerybtn.setOnClickListener(view -> {
             startActivity(new Intent(HomeActivity.this,SummeryActivity.class));
+        });
+
+        //-----------------diaryBtn-----------------------------------------
+        diarybtn.setOnClickListener(view -> {
+            startActivity(new Intent(HomeActivity.this, DiaryActivity.class));
         });
 
     }
