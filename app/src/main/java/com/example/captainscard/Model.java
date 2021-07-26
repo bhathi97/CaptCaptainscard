@@ -9,6 +9,9 @@ public class Model {
     String weight;
     String note;
 
+    public Model() {
+    }
+
     public String getName() {
         return name;
     }
@@ -31,5 +34,41 @@ public class Model {
 
     public String getNote() {
         return note;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "Model{" +
+                "name='" + name + '\'' +
+                ", age='" + age + '\'' +
+                ", position='" + position + '\'' +
+                ", height='" + height + '\'' +
+                ", weight='" + weight + '\'' +
+                ", note='" + note + '\'' +
+                '}';
     }
 }

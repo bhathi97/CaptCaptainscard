@@ -153,30 +153,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
 
             <Button
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/changedetails"
-                android:text="change"
-                android:drawableRight="@drawable/changep"
-                android:layout_gravity="right"
-                />
+                android:id="@+id/edit"
+                android:text="edit"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/changep"/>
 
             <Button
-                android:layout_width="150dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/deletedetails"
+                android:id="@+id/delete"
                 android:text="delete"
                 android:drawableRight="@drawable/deletedetail"
-                android:layout_gravity="right"/>
-
-
-
-
-
-
+                android:layout_margin="10dp"/>
 
         </LinearLayout>
 

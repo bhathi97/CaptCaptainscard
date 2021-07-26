@@ -1,11 +1,18 @@
 package com.example.captainscard;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -14,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerDetailActivity extends AppCompatActivity {
 
@@ -23,6 +31,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
 
     private MyAdopter adopter;
     private ArrayList<Model> list;
+    private List<String> keyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +44,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        adopter = new MyAdopter(this,list);
+        adopter = new MyAdopter(this,list, keyList);
 
         recyclerView.setAdapter(adopter);
 
@@ -46,7 +55,9 @@ public class PlayerDetailActivity extends AppCompatActivity {
                 //list.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Model model = dataSnapshot.getValue(Model.class);
+                    String keyId = dataSnapshot.getKey();
                     list.add(model);
+                    keyList.add(keyId);
                 }
                 adopter.notifyDataSetChanged();
             }
@@ -57,6 +68,7 @@ public class PlayerDetailActivity extends AppCompatActivity {
 
             }
         });
+
 
 
 
