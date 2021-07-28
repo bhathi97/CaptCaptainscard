@@ -1,6 +1,8 @@
 package com.example.captainscard;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
-
-
 
     ArrayList<Model> mList;
     Context context;
@@ -60,7 +60,7 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.update_dialog)).setExpanded(true,1200).create();
+                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.update_dialog)).setExpanded(true,650).create();
 
 //               dialogPlus.show();
 
@@ -108,7 +108,30 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
                         });
                     }
                 });
+            holder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(holder.name.getContext());
+                    builder.setTitle("Are you sure?");
+                    builder.setMessage("Delete data cant be undo");
 
+                    builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            FirebaseDatabase.getInstance().getReference("player").child(keyList.get(position)).removeValue();
+
+                        }
+                    });
+                    builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(holder.name.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    builder.show();
+                }
+
+            });
 
 
 

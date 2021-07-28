@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiaryActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class DiaryActivity extends AppCompatActivity {
 
     private MyAdopter2 adopter;
     private ArrayList<Model2> list;
+    private List<String> keyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,12 @@ public class DiaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diary);
 
         recyclerView = findViewById(R.id.recyclerViewName);
-        databaseReference =  FirebaseDatabase.getInstance().getReference("player");
+        databaseReference =  FirebaseDatabase.getInstance().getReference("value");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         list = new ArrayList<>();
-        adopter = new MyAdopter2(this,list);
+        adopter = new MyAdopter2(this,list,keyList);
 
         recyclerView.setAdapter(adopter);
 

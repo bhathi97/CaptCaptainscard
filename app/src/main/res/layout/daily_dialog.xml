@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Today workout points"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="center"/>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Name :"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#000000"-->
+<!--            android:paddingLeft="20dp"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="#000000"-->
+<!--            android:id="@+id/Dname"/>-->
+
+<!--    </LinearLayout>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="01. Give zero point for absents"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="02. Give 1 point for attitudes"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="03. Give 1 or 2 points for teamwork"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="04. Give 1 point for using equipments carefully"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="05. Give 1 point for skills"
+        android:padding="5dp"
+        android:textColor="@color/black"/>
+
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/markgroup"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/zero"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/one"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/two"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/three"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/four"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:padding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/five"/>
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="submit"
+                android:id="@+id/submit"
+                android:drawableRight="@drawable/submitt"/>
+
+            </LinearLayout>
+
+
+
+</LinearLayout>

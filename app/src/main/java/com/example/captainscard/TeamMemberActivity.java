@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,8 +28,11 @@ public class TeamMemberActivity extends AppCompatActivity {
     private Button AddToTeam;
     private Button backtohomefromteam;
 
+    private RadioButton startten,startzero;
+
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference root = database.getReference().child("player");
+    private  DatabaseReference root2 = database.getReference().child("value");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,10 @@ public class TeamMemberActivity extends AppCompatActivity {
         newHeight = findViewById(R.id.newHeight);
         newWeight = findViewById(R.id.newWeight);
         newNote = findViewById(R.id.newNote);
+
+        startten = findViewById(R.id.startten);
+        startzero = findViewById(R.id.startzero);
+
 
         AddToTeam = findViewById(R.id.AddToTeam);
 
@@ -64,14 +72,22 @@ public class TeamMemberActivity extends AppCompatActivity {
             String weight = newWeight.getText().toString();
             String note = newNote.getText().toString();
 
-            HashMap<String,String> userMap = new HashMap<>();
+            String m1 = startzero.getText().toString();
+            String m2 = startten.getText().toString();
 
+            HashMap<String,String> userMap = new HashMap<>();
             userMap.put("name" , name);
             userMap.put("age" , age);
             userMap.put("position" , position);
             userMap.put("height" , height);
             userMap.put("weight" , weight);
             userMap.put("note" , note);
+
+//            if (startzero.isChecked()){
+//                userMap.put("value" , m1);
+//            }else{
+//                userMap.put("value" , m2);
+//            }
 
             root.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -81,6 +97,22 @@ public class TeamMemberActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            HashMap<String,String> userMap2 = new HashMap<>();
+            userMap2.put("name" , name);
+
+            if (startzero.isChecked()){
+                userMap2.put("value" , m1);
+            }else{
+                userMap2.put("value" , m2);
+            }
+            root2.push().setValue(userMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(TeamMemberActivity.this,"Successfully added to the team value ",Toast.LENGTH_SHORT).show();
+                }
+            });
+
         });
     }
 }
