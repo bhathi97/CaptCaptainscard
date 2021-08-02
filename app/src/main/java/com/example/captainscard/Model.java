@@ -79,6 +79,7 @@ public class Model {
                 ", height='" + height + '\'' +
                 ", weight='" + weight + '\'' +
                 ", note='" + note + '\'' +
+                ", value='" + value + '\'' +
                 '}';
     }
 }

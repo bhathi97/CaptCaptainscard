@@ -12,16 +12,24 @@ public class Model2 {
         return name;
     }
 
-    String value;
+    Integer value;
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 
     public Model2() {
+    }
+
+    @Override
+    public String toString() {
+        return "Model2{" +
+                "name='" + name + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }

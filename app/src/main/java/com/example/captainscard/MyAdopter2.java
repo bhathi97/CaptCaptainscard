@@ -1,6 +1,8 @@
 package com.example.captainscard;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.orhanobut.dialogplus.DialogPlus;
@@ -30,9 +37,10 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
     ArrayList<Model2> nList;
     Context context;
     List<String> keyList;
-
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference root3 = database.getReference().child("value");
+    private FirebaseDatabase rootNode;
+    private DatabaseReference valueReference;
+    private Integer valueOfName;
+    private String key;
 
     public MyAdopter2(Context context, ArrayList<Model2> nList,List<String> keyList){
         this.nList = nList;
@@ -51,24 +59,23 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyAdopter2.MyViewHolder holder, int position) {
         Model2 model2 = nList.get(position);
 
-        holder.name.setText(model2.getName());
+        final String nameFromPage = model2.getName();
+        holder.name.setText(nameFromPage);
+
+
 
         holder.point.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.daily_dialog)).setExpanded(true,700).create();
-
-
 //                dialogPlus.show();
 
                 View view = dialogPlus.getHolderView();
-//                EditText name = view.findViewById(R.id.Dname);
-//
-                Button submitBtn = view.findViewById(R.id.submit);
-//
-//                name.setText(model2.getName());
+                TextView name = view.findViewById(R.id.Dname);
 
-//
+                Button submitBtn = view.findViewById(R.id.submit);
+
+                name.setText(nameFromPage);
                 RadioButton zero = view.findViewById(R.id.zero);
                 RadioButton one = view.findViewById(R.id.one);
                 RadioButton two = view.findViewById(R.id.two);
@@ -78,10 +85,12 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
 
                 dialogPlus.show();
 
-
                 submitBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        Toast.makeText(view.getContext(), "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ", Toast.LENGTH_SHORT).show();
+
                         String a0 = zero.getText().toString();
                         String a1 = one.getText().toString();
                         String a2 = two.getText().toString();
@@ -89,10 +98,11 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
                         String a4 = four.getText().toString();
                         String a5 = five.getText().toString();
 
-//                        Map<String,Object> map = new HashMap<>();
-//                        map.put("name",name.getText().toString());
-                        HashMap<String,String> userMap3 = new HashMap<>();
 
+//                        HashMap<String,String> userMap3 = new HashMap<>();
+//                        userMap3.put("name",name.getText().toString());
+
+                        Map<String,Object> userMap3 = new HashMap<>();
 
                         if (zero.isChecked()){
                             userMap3.put("value" , a0);
@@ -108,14 +118,59 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
                             userMap3.put("value" , a5);
                         }
 
-                        root3.push().setValue(userMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        rootNode = FirebaseDatabase.getInstance();
+                        valueReference = rootNode.getReference("value");
+
+                        valueReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                             @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(holder.name.getContext(),"daily mark was added successfully", Toast.LENGTH_SHORT).show();
-                                dialogPlus.dismiss();
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (DataSnapshot dataSnapshot : task.getResult().getChildren()) {
+                                        Model2 valueFromFirebase = dataSnapshot.getValue(Model2.class);
+                                        if (valueFromFirebase != null) {
+                                            Toast.makeText(view.getContext(), nameFromPage, Toast.LENGTH_SHORT).show();
+                                            if (valueFromFirebase.getName().equals(nameFromPage)) {
+                                                valueOfName = valueFromFirebase.getValue();
+                                                key = dataSnapshot.getKey();
+                                                Integer fullMark = valueOfName + Integer.parseInt(userMap3.get("value").toString());
+                                                Log.d("AAAAAAAAAAAAAAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fullMark);
+
+                                                valueReference.child(key).child("value").setValue(fullMark, new DatabaseReference.CompletionListener() {
+                                                    @Override
+                                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                                        Toast.makeText(holder.name.getContext(), "daily value added", Toast.LENGTH_LONG).show();
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         });
 
+//                        root3.push().setValue(userMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                Toast.makeText(holder.name.getContext(),"daily mark was added successfully", Toast.LENGTH_SHORT).show();
+//                                dialogPlus.dismiss();
+//                            }
+//                        });
+
+
+
+//                        FirebaseDatabase.getInstance().getReference("value").child(keyList.get(position)).updateChildren(userMap3).addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(holder.name.getContext(), "daily mark was added successfully", Toast.LENGTH_SHORT).show();
+//                                dialogPlus.dismiss();
+//                            }
+//                        })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception e) {
+//                                    Toast.makeText(holder.name.getContext(), "EROR EROR", Toast.LENGTH_SHORT).show();
+//                                }
+//                            });
 
 
 
@@ -137,6 +192,7 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         Button point;
+        //String value;
 
 
         public MyViewHolder(@NonNull View itemView){

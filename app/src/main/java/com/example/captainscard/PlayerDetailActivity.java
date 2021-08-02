@@ -9,10 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +35,8 @@ public class PlayerDetailActivity extends AppCompatActivity {
     private MyAdopter adopter;
     private ArrayList<Model> list;
     private List<String> keyList = new ArrayList<>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +72,8 @@ public class PlayerDetailActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
-
-
-
-
-
     }
+
 }

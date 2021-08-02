@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TeamMemberActivity extends AppCompatActivity {
 
@@ -98,15 +99,14 @@ public class TeamMemberActivity extends AppCompatActivity {
                 }
             });
 
-            HashMap<String,String> userMap2 = new HashMap<>();
-            userMap2.put("name" , name);
-
+            Model2 model2 =  new Model2();
+            model2.setName(name);
             if (startzero.isChecked()){
-                userMap2.put("value" , m1);
+                model2.setValue(Integer.parseInt(m1));
             }else{
-                userMap2.put("value" , m2);
+                model2.setValue(Integer.parseInt(m2));
             }
-            root2.push().setValue(userMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
+            root2.push().setValue(model2).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     Toast.makeText(TeamMemberActivity.this,"Successfully added to the team value ",Toast.LENGTH_SHORT).show();
