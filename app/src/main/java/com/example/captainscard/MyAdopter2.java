@@ -89,7 +89,7 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
                     @Override
                     public void onClick(View v) {
 
-                        Toast.makeText(view.getContext(), "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(view.getContext(), "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ", Toast.LENGTH_SHORT).show();
 
                         String a0 = zero.getText().toString();
                         String a1 = one.getText().toString();
@@ -133,7 +133,7 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
                                                 valueOfName = valueFromFirebase.getValue();
                                                 key = dataSnapshot.getKey();
                                                 Integer fullMark = valueOfName + Integer.parseInt(userMap3.get("value").toString());
-                                                Log.d("AAAAAAAAAAAAAAAAAAAAA", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fullMark);
+//                                                Log.d("value aded", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + fullMark);
 
                                                 valueReference.child(key).child("value").setValue(fullMark, new DatabaseReference.CompletionListener() {
                                                     @Override
@@ -148,37 +148,8 @@ public class MyAdopter2 extends RecyclerView.Adapter<MyAdopter2.MyViewHolder> {
                             }
                         });
 
-//                        root3.push().setValue(userMap3).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete(@NonNull Task<Void> task) {
-//                                Toast.makeText(holder.name.getContext(),"daily mark was added successfully", Toast.LENGTH_SHORT).show();
-//                                dialogPlus.dismiss();
-//                            }
-//                        });
-
-
-
-//                        FirebaseDatabase.getInstance().getReference("value").child(keyList.get(position)).updateChildren(userMap3).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(holder.name.getContext(), "daily mark was added successfully", Toast.LENGTH_SHORT).show();
-//                                dialogPlus.dismiss();
-//                            }
-//                        })
-//                            .addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Toast.makeText(holder.name.getContext(), "EROR EROR", Toast.LENGTH_SHORT).show();
-//                                }
-//                            });
-
-
-
                     }
                 });
-
-
-
             }
         });
 
