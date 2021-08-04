@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TeamMemberActivity extends AppCompatActivity {
-
     private EditText newName;
     private EditText newAge;
     private EditText newPosition;
@@ -28,9 +27,8 @@ public class TeamMemberActivity extends AppCompatActivity {
     private EditText newNote;
     private Button AddToTeam;
     private Button backtohomefromteam;
-
-    private RadioButton startten,startzero;
-
+    private RadioButton startten;
+    private RadioButton startzero;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference root = database.getReference().child("player");
     private  DatabaseReference root2 = database.getReference().child("value");
@@ -39,7 +37,6 @@ public class TeamMemberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_member);
-
         backtohomefromteam = findViewById(R.id.backtohomefromteam);
         newName = findViewById(R.id.newName);
         newAge = findViewById(R.id.newAge);
@@ -47,13 +44,9 @@ public class TeamMemberActivity extends AppCompatActivity {
         newHeight = findViewById(R.id.newHeight);
         newWeight = findViewById(R.id.newWeight);
         newNote = findViewById(R.id.newNote);
-
         startten = findViewById(R.id.startten);
         startzero = findViewById(R.id.startzero);
-
-
         AddToTeam = findViewById(R.id.AddToTeam);
-
 
         //--------------back-------------------
         backtohomefromteam.setOnClickListener(view ->{
@@ -61,7 +54,6 @@ public class TeamMemberActivity extends AppCompatActivity {
             finish();
             Intent intent = new Intent(TeamMemberActivity.this,HomeActivity.class);
             startActivity(intent);
-
         } );
 
         //-------------------save data------------------
@@ -72,7 +64,6 @@ public class TeamMemberActivity extends AppCompatActivity {
             String height = newHeight.getText().toString();
             String weight = newWeight.getText().toString();
             String note = newNote.getText().toString();
-
             String m1 = startzero.getText().toString();
             String m2 = startten.getText().toString();
 
@@ -83,12 +74,6 @@ public class TeamMemberActivity extends AppCompatActivity {
             userMap.put("height" , height);
             userMap.put("weight" , weight);
             userMap.put("note" , note);
-
-//            if (startzero.isChecked()){
-//                userMap.put("value" , m1);
-//            }else{
-//                userMap.put("value" , m2);
-//            }
 
             root.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -112,7 +97,6 @@ public class TeamMemberActivity extends AppCompatActivity {
                     Toast.makeText(TeamMemberActivity.this,"Successfully added to the team value ",Toast.LENGTH_SHORT).show();
                 }
             });
-
         });
     }
 }

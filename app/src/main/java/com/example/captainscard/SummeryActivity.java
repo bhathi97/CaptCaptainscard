@@ -18,12 +18,10 @@ public class SummeryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summery);
-
-
         playerdetailbtn = findViewById(R.id.playerdetailbtn);
         ranklistbtn= findViewById(R.id.ranklistbtn);
         iniperf= findViewById(R.id.iniperf);
-        backtohomebtn= findViewById(R.id.backtohomefromteam);
+        backtohomebtn= findViewById(R.id.backtohomebtn);
 
         //-------------------playerDetailsPage----------------------
         playerdetailbtn.setOnClickListener(view ->{
@@ -36,15 +34,15 @@ public class SummeryActivity extends AppCompatActivity {
             Toast.makeText(this, "Here you can see the players Ranking top to bottom", Toast.LENGTH_LONG).show();
         });
 
-//        //-----------------individual performance page---------------
-//        iniperf.setOnClickListener(view ->{
-//            startActivity(new Intent(SummeryActivity.this, PerformanceActivity.class));
-//        });
-//
-//        //------------------backbtn---------------------------------
-//        iniperf.setOnClickListener(view ->{
-//            startActivity(new Intent(SummeryActivity.this, PerformanceActivity.class));
-//        });
+        //-----------------individual performance page---------------
+        iniperf.setOnClickListener(view ->{
+            startActivity(new Intent(SummeryActivity.this, PerformanceActivity.class));
+        });
+
+        //------------------backbtn---------------------------------
+        backtohomebtn.setOnClickListener(view ->{
+            startActivity(new Intent(SummeryActivity.this, HomeActivity.class));
+        });
 
     }
 }

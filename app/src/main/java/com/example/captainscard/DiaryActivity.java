@@ -19,9 +19,7 @@ import java.util.List;
 public class DiaryActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-
     private DatabaseReference databaseReference;
-
     private MyAdopter2 adopter;
     private ArrayList<Model2> list;
     private List<String> keyList = new ArrayList<>();
@@ -30,12 +28,10 @@ public class DiaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
-
         recyclerView = findViewById(R.id.recyclerViewName);
         databaseReference =  FirebaseDatabase.getInstance().getReference("value");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         list = new ArrayList<>();
         adopter = new MyAdopter2(this,list,keyList);
 
@@ -44,21 +40,15 @@ public class DiaryActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //list.clear();
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Model2 model = dataSnapshot.getValue(Model2.class);
                     list.add(model);
                 }
                 adopter.notifyDataSetChanged();
             }
-
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
-
     }
 }

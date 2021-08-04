@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 
 public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
-
     ArrayList<Model> mList;
     Context context;
     List<String> keyList;
@@ -35,22 +34,18 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
         this.mList = mList;
         this.context = context;
         this.keyList = keyList;
-
     }
-
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(context).inflate(R.layout.item, parent,false);
         return new MyViewHolder(v);
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Model model = mList.get(position);
-
         holder.name.setText(model.getName());
         holder.age.setText(model.getAge());
         holder.positionF.setText(model.getPosition());
@@ -62,11 +57,7 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.update_dialog)).setExpanded(true,650).create();
-
-//               dialogPlus.show();
-
                 View view = dialogPlus.getHolderView();
-
                 EditText name = view.findViewById(R.id.nameNew);
                 EditText age = view.findViewById(R.id.ageNew);
                 EditText positionFF = view.findViewById(R.id.positionNew);
@@ -74,6 +65,7 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
                 EditText weight = view.findViewById(R.id.weightNew);
                 EditText note = view.findViewById(R.id.noteNew);
                 Button upBtn = view.findViewById(R.id.update);
+                Button delete= view.findViewById(R.id.delete);
 
                 name.setText(model.getName());
                 age.setText(model.getAge());
@@ -109,18 +101,16 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
                         });
                     }
                 });
-            holder.delete.setOnClickListener(new View.OnClickListener() {
+                delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(holder.name.getContext());
                     builder.setTitle("Are you sure?");
                     builder.setMessage("Delete data cant be undo");
-
                     builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             FirebaseDatabase.getInstance().getReference("player").child(keyList.get(position)).removeValue();
-
                         }
                     });
                     builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
@@ -131,12 +121,7 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
                     });
                     builder.show();
                 }
-
             });
-
-
-
-
             }
         });
     }
@@ -153,26 +138,19 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
         TextView height;
         TextView weight;
         TextView note;
-
-
         Button edit;
         Button delete;
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
-
             name = itemView.findViewById(R.id.nameShow);
             age = itemView.findViewById(R.id.ageShow);
             positionF = itemView.findViewById(R.id.positionShow);
             height = itemView.findViewById(R.id.heightShow);
             weight = itemView.findViewById(R.id.weightShow);
             note = itemView.findViewById(R.id.noteShow);
-
             edit = itemView.findViewById(R.id.edit);
             delete = itemView.findViewById(R.id.delete);
-
         }
     }
-
-
 }

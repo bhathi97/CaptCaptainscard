@@ -34,11 +34,9 @@ public class MyAdopter3 extends RecyclerView.Adapter<MyAdopter3.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyAdopter3.MyViewHolder holder, int position) {
         Model3 model3 = rList.get(position);
-
         final String nameFromPage = model3.getName();
         holder.name.setText(nameFromPage);
     }
-
 
     @Override
     public int getItemCount() {
@@ -47,13 +45,10 @@ public class MyAdopter3 extends RecyclerView.Adapter<MyAdopter3.MyViewHolder> {
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        
-
 
         public MyViewHolder(@NonNull View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.rankName);
-
         }
     }
 }

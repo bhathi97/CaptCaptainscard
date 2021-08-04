@@ -16,20 +16,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-
     private EditText loginemail;
     private EditText loginpassword;
     private Button loginbtn;
     private Button sigupbtn;
-
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         loginemail = findViewById(R.id.loginemail);
         loginpassword = findViewById(R.id.loginpassword);
         loginbtn = findViewById(R.id.loginbtn);
@@ -41,15 +37,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         sigupbtn.setOnClickListener(view -> {
-
             Intent intent = new Intent(this,SigActivity.class);
             startActivity(intent);
-
         });
-
     }
-
-
 
     private void loginUser(){
         String email = loginemail.getText().toString();
@@ -70,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                         Intent openActivity = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(openActivity);
-
                     }else{
                         Toast.makeText(MainActivity.this,"Login Error" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                     }
@@ -78,5 +68,4 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
-
 }

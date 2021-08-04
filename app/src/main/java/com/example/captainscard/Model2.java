@@ -1,8 +1,8 @@
 package com.example.captainscard;
 
 public class Model2 {
-
     String name;
+    Integer value;
 
     public void setName(String name) {
         this.name = name;
@@ -11,8 +11,6 @@ public class Model2 {
     public String getName() {
         return name;
     }
-
-    Integer value;
 
     public Integer getValue() {
         return value;

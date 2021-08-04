@@ -1,4 +1,4 @@
-package com.example.captainscard;
+ package com.example.captainscard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,11 +20,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class RankActivity extends AppCompatActivity {
-
     private RecyclerView recyclerView;
-
     private DatabaseReference databaseReference;
-
     private MyAdopter3 adopter;
     private ArrayList<Model3> valueListFromFirebase = new ArrayList<>();
     private List<String> keyList = new ArrayList<>();
@@ -33,7 +30,6 @@ public class RankActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
-
         recyclerView = findViewById(R.id.rankRecyclerView);
         databaseReference =  FirebaseDatabase.getInstance().getReference("value");
         recyclerView.setHasFixedSize(true);
@@ -48,8 +44,6 @@ public class RankActivity extends AppCompatActivity {
                 }
                 Comparator<Model3> compareValues = Comparator.comparing(Model3::getValue);
                 List<Model3> sortedValues = valueListFromFirebase.stream().sorted(compareValues).collect(Collectors.toList());
-                Log.d("AAAAAAAAAAAAAAAAA", String.valueOf(sortedValues.size()));
-                Log.d("BBBBBBBBBBBBBBB", String.valueOf(valueListFromFirebase.size()));
                 List<Model3> decendendValues = new ArrayList<>();
                 for (int i = sortedValues.size(); i > 0; i--) {
                     decendendValues.add(sortedValues.get(i - 1));
@@ -59,14 +53,12 @@ public class RankActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
 
     private void executeList(List<Model3> sortedValues) {
         adopter = new MyAdopter3(this, sortedValues,keyList);
-
         recyclerView.setAdapter(adopter);
     }
 }

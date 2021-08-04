@@ -1,21 +1,11 @@
 package com.example.captainscard;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,42 +14,50 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class PlayerDetailActivity extends AppCompatActivity {
+public class PerformanceActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
-    private MyAdopter adopter;
-    private ArrayList<Model> list;
+    private MyAdopter4 adopter;
+    private ArrayList<Model3> valueListFromFirebase = new ArrayList<>();
     private List<String> keyList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player_detail);
-        recyclerView = findViewById(R.id.recyclerView);
-        databaseReference =  FirebaseDatabase.getInstance().getReference("player");
+        setContentView(R.layout.activity_performance);
+        recyclerView = findViewById(R.id.perfRecyclerView);
+        databaseReference =  FirebaseDatabase.getInstance().getReference("value");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<>();
-        adopter = new MyAdopter(this,list, keyList);
-        recyclerView.setAdapter(adopter);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Model model = dataSnapshot.getValue(Model.class);
-                    String keyId = dataSnapshot.getKey();
-                    list.add(model);
-                    keyList.add(keyId);
+                    Model3 model = dataSnapshot.getValue(Model3.class);
+                    valueListFromFirebase.add(model);
                 }
+                Comparator<Model3> compareValues = Comparator.comparing(Model3::getValue);
+                List<Model3> sortedValues = valueListFromFirebase.stream().sorted(compareValues).collect(Collectors.toList());
+                List<Model3> decendendValues = new ArrayList<>();
+                for (int i = sortedValues.size(); i > 0; i--) {
+                    decendendValues.add(sortedValues.get(i - 1));
+                }
+                executeList(decendendValues);
                 adopter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    private void executeList(List<Model3> sortedValues) {
+        adopter = new MyAdopter4(this, sortedValues,keyList);
+        recyclerView.setAdapter(adopter);
     }
 }

@@ -16,17 +16,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SigActivity extends AppCompatActivity {
-
-    private EditText addname, addpw, addemail;
+    private EditText addname;
+    private EditText addpw;
+    private EditText addemail;
     private Button signUpBtn;
-
     FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sig);
-
         addname = findViewById(R.id.addname);
         addpw = findViewById(R.id.addpw);
         addemail = findViewById(R.id.addemail);

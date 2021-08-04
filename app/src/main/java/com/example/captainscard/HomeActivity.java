@@ -5,38 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity {
-
     Button logoutbtn;
     FirebaseAuth mAuth;
-
     private Button teambtn;
     private Button summerybtn;
     private Button diarybtn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
         logoutbtn = findViewById(R.id.logoutbtn);
         teambtn = findViewById(R.id.teambtn);
         summerybtn = findViewById(R.id.summerybtn);
         diarybtn = findViewById(R.id.diarybtn);
-
-
-
         mAuth = FirebaseAuth.getInstance();
 
         //------------------logOutBtn------------------------------------
         logoutbtn.setOnClickListener(view -> {
             mAuth.signOut();
             startActivity(new Intent(HomeActivity.this,MainActivity.class));
+            Toast.makeText(this, "signed out successfully", Toast.LENGTH_LONG).show();
         });
 
         //-----------------teamMemberPageBtn-----------------------------
