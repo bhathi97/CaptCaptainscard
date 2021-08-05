@@ -1,79 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     android:orientation="vertical"
-    android:layout_weight="11"
     android:background="@drawable/login">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:padding="50dp"
-        android:src="@drawable/home"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="vertical"
-        android:padding="30dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/teambtn"
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="5dp"
+            android:src="@drawable/home"/>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:text="add team members"
-            android:layout_weight="1"
-            android:drawableEnd="@drawable/teambtnv"/>
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-        <Button
-            android:id="@+id/diarybtn"
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="3"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:padding="17dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:src="@drawable/teambtnv"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <Button
+                            android:id="@+id/teambtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="add team members" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:padding="17dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:src="@drawable/diarybtnp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <Button
+                            android:id="@+id/diarybtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="diary" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:padding="17dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:src="@drawable/summerybtnp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <Button
+                            android:id="@+id/summerybtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="summery" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:padding="17dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:src="@drawable/resetbtnp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <Button
+                            android:id="@+id/resetbtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:text="reset" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_margin="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:gravity="center"
+                        android:padding="17dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:src="@drawable/logoutbtnp"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"/>
+
+                        <Button
+                            android:id="@+id/logoutbtn"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:text="log out" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </GridLayout>
+
+        </LinearLayout>
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="diary"
-            android:drawableEnd="@drawable/diarybtnp"/>
-
-
-        <Button
-            android:id="@+id/summerybtn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="summery"
-            android:drawableRight="@drawable/summerybtnp"/>
-
-        <Button
-            android:id="@+id/resetbtn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="reset"
-            android:drawableEnd="@drawable/resetbtnp"/>
-
-        <Button
-            android:id="@+id/logoutbtn"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="log out"
-            android:drawableEnd="@drawable/logoutbtnp"
-            />
-
+            android:layout_height="50dp"
+            android:text="HOME PAGE"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="HOME PAGE"
-        android:textAlignment="center"
-        android:textColor="@color/black"/>
-
-</LinearLayout>
+</ScrollView>

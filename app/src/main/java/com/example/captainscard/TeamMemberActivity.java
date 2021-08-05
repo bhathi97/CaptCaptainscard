@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -67,36 +68,57 @@ public class TeamMemberActivity extends AppCompatActivity {
             String m1 = startzero.getText().toString();
             String m2 = startten.getText().toString();
 
-            HashMap<String,String> userMap = new HashMap<>();
-            userMap.put("name" , name);
-            userMap.put("age" , age);
-            userMap.put("position" , position);
-            userMap.put("height" , height);
-            userMap.put("weight" , weight);
-            userMap.put("note" , note);
+            if (TextUtils.isEmpty(name)){
+                newName.setError("name cannot be empty");
+                newName.requestFocus( );
+            }else if(TextUtils.isEmpty(age)){
+                newAge.setError("age cannot be empty");
+                newAge.requestFocus();
+            }else if(TextUtils.isEmpty(position)) {
+                newPosition.setError("position cannot be empty");
+                newPosition.requestFocus();
+            }else if(TextUtils.isEmpty(height)) {
+                newHeight.setError("height cannot be empty");
+                newHeight.requestFocus();
+            }else if(TextUtils.isEmpty(weight)) {
+                newWeight.setError("weight cannot be empty");
+                newWeight.requestFocus();
+            }else if(TextUtils.isEmpty(note)) {
+                newNote.setError("note cannot be empty");
+            }else {
 
-            root.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(TeamMemberActivity.this,"Successfully added to the team card ",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(TeamMemberActivity.this,HomeActivity.class);
-                    startActivity(intent);
+                HashMap<String, String> userMap = new HashMap<>();
+                userMap.put("name", name);
+                userMap.put("age", age);
+                userMap.put("position", position);
+                userMap.put("height", height);
+                userMap.put("weight", weight);
+                userMap.put("note", note);
+
+                root.push().setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(TeamMemberActivity.this, "Successfully added to the team card ", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(TeamMemberActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                Model2 model2 = new Model2();
+                model2.setName(name);
+                if (startten.isChecked()) {
+                    model2.setValue(Integer.parseInt(m2));
+                } else {
+                    model2.setValue(Integer.parseInt(m1));
                 }
-            });
-
-            Model2 model2 =  new Model2();
-            model2.setName(name);
-            if (startzero.isChecked()){
-                model2.setValue(Integer.parseInt(m1));
-            }else{
-                model2.setValue(Integer.parseInt(m2));
+                root2.push().setValue(model2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(TeamMemberActivity.this, "Successfully added to the team value ", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
-            root2.push().setValue(model2).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(TeamMemberActivity.this,"Successfully added to the team value ",Toast.LENGTH_SHORT).show();
-                }
-            });
         });
     }
+
 }

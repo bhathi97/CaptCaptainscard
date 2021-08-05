@@ -56,7 +56,7 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.update_dialog)).setExpanded(true,650).create();
+                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.name.getContext()).setContentHolder(new ViewHolder(R.layout.update_dialog)).setExpanded(true,1000).create();
                 View view = dialogPlus.getHolderView();
                 EditText name = view.findViewById(R.id.nameNew);
                 EditText age = view.findViewById(R.id.ageNew);
@@ -101,29 +101,30 @@ public class MyAdopter extends RecyclerView.Adapter<MyAdopter.MyViewHolder> {
                         });
                     }
                 });
-                delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(holder.name.getContext());
-                    builder.setTitle("Are you sure?");
-                    builder.setMessage("Delete data cant be undo");
-                    builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            FirebaseDatabase.getInstance().getReference("player").child(keyList.get(position)).removeValue();
-                        }
-                    });
-                    builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(holder.name.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                    builder.show();
-                }
-            });
             }
         });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(holder.name.getContext());
+                builder.setTitle("Are you sure?");
+                builder.setMessage("Delete data cant be undo");
+                builder.setPositiveButton("delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference("player").child(keyList.get(position)).removeValue();
+                    }
+                });
+                builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(holder.name.getContext(), "Cancelled", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();
+            }
+        });
+
     }
 
     @Override
