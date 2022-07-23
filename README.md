@@ -23,7 +23,13 @@ androidStudio / java
 
 ## work Plan
 
-![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/image.png)
+![](https://github.com/bhathi97/Captainscard/blob/rank/image.png)
+
+## all work 
+
+
+
+
 
 
 
