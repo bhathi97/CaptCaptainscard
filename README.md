@@ -25,12 +25,7 @@ androidStudio / java
 
 ![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/image.png)
 
-## login page
-![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/login%20page.jpg)
 
-## add marks
-![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/add%20marks%201.jpg)
-![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/add%20marks%202.jpg)
 
 
 
