@@ -57,7 +57,7 @@ androidStudio / java
 
 
 
-# THank you!
+# Thank you!
 ## Bhathiya Bandara
 
 
