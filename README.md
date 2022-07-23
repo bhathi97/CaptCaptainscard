@@ -25,9 +25,35 @@ androidStudio / java
 
 ![](https://github.com/bhathi97/Captainscard/blob/rank/image.png)
 
-## PDF
+## Login page
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/login.png)
 
-https://github.com/bhathi97/Captainscard/blob/rank/CC%20presentation.pdf
+## SignUp
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/signup.png)
+
+## Home page
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/home.png)
+
+## Add team member
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/addTeamMember.png)
+
+## Summary
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/summery.png)
+
+## Rank list
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/rankList.png)
+
+## Player details
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/playerDetails.png)
+
+## Individual performance
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/individualPerformance.png)
+
+## Diary
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/diary.png)
+
+## FireBAse
+![](https://github.com/bhathi97/CaptainsCard/blob/rank/ss/fireBase.png)
 
 
 
