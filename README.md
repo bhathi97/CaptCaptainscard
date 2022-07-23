@@ -25,7 +25,9 @@ androidStudio / java
 
 ![](https://github.com/bhathi97/Captainscard/blob/rank/image.png)
 
-## all work 
+## PDF
+
+https://github.com/bhathi97/Captainscard/blob/rank/CC%20presentation.pdf
 
 
 
