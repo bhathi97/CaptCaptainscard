@@ -21,6 +21,10 @@ androidStudio / java
 
 ♦ Details log pages
 
+## work Plan
+
+![](https://github.com/bhathi97/Captainscard/blob/rank/Screenshots/image.png)
+
 
 
 
